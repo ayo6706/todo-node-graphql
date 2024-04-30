@@ -5,6 +5,7 @@ import { TodosModule } from './todos/todos.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { Todo } from './todos/todo.entity';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
       url: 'mongodb://localhost/todo',
       synchronize: true,
       useUnifiedTopology: true,
+      entities:  [Todo]
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
