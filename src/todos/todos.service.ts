@@ -16,4 +16,12 @@ export class TodosService {
             throw error;
         }
     }
+
+    async getTodos(): Promise<Todo[]> {
+        try{
+            return await this.repo.find();
+        }catch(error:any){
+            throw error;
+        }
+    }
 }
