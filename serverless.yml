@@ -1,0 +1,16 @@
+service: todo-api
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: us-east-1
+
+functions:
+  graphql:
+    handler: dist/lambda.handler
+    timeout: 30  # Increase the timeout to 30 seconds
+    events:
+      - http:
+          path: graphql
+          method: any
+          cors: true
