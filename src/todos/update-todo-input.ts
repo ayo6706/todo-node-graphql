@@ -1,12 +1,14 @@
 import { Field, InputType } from "@nestjs/graphql";
-import { MinLength } from "class-validator";
+import { IsNotEmpty, MinLength } from "class-validator";
 
 @InputType()
 export class UpdateTodoInput {
     @Field()
+    @IsNotEmpty()
     id: string;
     
     @Field()
+    @IsNotEmpty()
     @MinLength(1)
     title: string;
 
