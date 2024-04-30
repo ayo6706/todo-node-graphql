@@ -14,13 +14,13 @@ import { Todo } from './todos/todo.entity';
       url: 'mongodb+srv://admin:admin@todo.oh75pt7.mongodb.net/?retryWrites=true&w=majority&appName=todo',
       synchronize: true,
       useUnifiedTopology: true,
-      entities:  [Todo]
+      entities: [Todo],
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      autoSchemaFile: true
+      autoSchemaFile: true,
     }),
-    TodoModule
+    TodoModule,
   ],
   controllers: [AppController],
   providers: [AppService],
