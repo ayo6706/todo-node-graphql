@@ -41,4 +41,14 @@ export class TodosService {
             throw error;
         }
     }
+
+    async deleteTodoById(id: string): Promise<Todo> {
+        try{
+            const todo = await this.repo.findOneBy({id});
+            await this.repo.remove(todo);
+            return todo;
+        }catch(error:any){
+            throw error;
+        }
+    }
 }
