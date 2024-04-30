@@ -7,7 +7,7 @@ import { CreateTodoInput } from './create-todo-input';
 import { UpdateTodoInput } from './update-todo-input';
 
 @Injectable()
-export class TodosService {
+export class TodoService {
     constructor(
         @InjectRepository(Todo) private repo: Repository<Todo>
     ){}

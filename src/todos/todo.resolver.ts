@@ -1,10 +1,10 @@
 import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
 import { TodoType } from "./todo.type";
-import { TodosService } from "./todo.service";
+import { TodoService } from "./todo.service";
 
 @Resolver(of => TodoType)
-export class TodosResolver {
-    constructor(private service: TodosService) {}
+export class TodoResolver {
+    constructor(private service: TodoService) {}
 
     @Query(returns => [TodoType])
     async todos(): Promise<TodoType[]> {
