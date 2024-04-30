@@ -24,4 +24,12 @@ export class TodosService {
             throw error;
         }
     }
+
+    async getTodoById(id: string): Promise<Todo> {
+        try{
+            return await this.repo.findOneBy({id});
+        }catch(error:any){
+            throw error;
+        }
+    }
 }
