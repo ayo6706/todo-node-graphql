@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Todo } from './todo.entity';
 import { Repository } from 'typeorm';
@@ -43,8 +43,13 @@ export class TodoService {
 
   async updateTodoById(todo: UpdateTodoInput): Promise<Todo> {
     try {
-      await this.repo.update({ id: todo.id }, todo);
-      return await this.repo.findOneBy({ id: todo.id });
+      let todoExist = await this.repo.findOneBy({ id: todo.id });
+      if (!todoExist) {
+        throw new HttpException('Todo not found', HttpStatus.NOT_FOUND);
+      }
+      todoExist = { ...todoExist, ...todo };
+      const result = await this.repo.save(todoExist);
+      return result;
     } catch (error: any) {
       throw error;
     }
@@ -53,8 +58,12 @@ export class TodoService {
   async deleteTodoById(id: string): Promise<Todo> {
     try {
       const todo = await this.repo.findOneBy({ id });
+      if (!todo) {
+        throw new HttpException('Todo not found', HttpStatus.NOT_FOUND);
+      }
+      const deletedTodo = { ...todo };
       await this.repo.remove(todo);
-      return todo;
+      return deletedTodo; 
     } catch (error: any) {
       throw error;
     }
