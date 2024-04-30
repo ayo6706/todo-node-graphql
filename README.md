@@ -111,11 +111,11 @@ query {
 
 #### Create a New Todo
 
-To create a new todo, replace the placeholders with your desired values for `title`, `description`, and `completed`:
+To create a new todo, replace the placeholders with your desired values for `title`, and `description`:
 
 ```graphql
 mutation {
-  createTodo(input: { title: "title", description: "description", completed: false }) {
+  createTodo(input: { title: "title", description: "description" }) {
     id
     title
     description
