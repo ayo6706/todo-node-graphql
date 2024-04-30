@@ -71,4 +71,89 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
-"# todo-node-graphql" 
+
+
+## GraphQL API Usage
+
+### Queries
+
+#### Get All Todos
+
+To fetch all todos, use the following query:
+
+```graphql
+query {
+  todos {
+    id
+    title
+    description
+    completed
+  }
+}
+```
+
+#### Get a Specific Todo by ID
+
+To get a specific todo by its ID, replace `todoId` with the actual ID of the todo:
+
+```graphql
+query {
+  todo(id: "todoId") {
+    id
+    title
+    description
+    completed
+  }
+}
+```
+
+### Mutations
+
+#### Create a New Todo
+
+To create a new todo, replace the placeholders with your desired values for `title`, `description`, and `completed`:
+
+```graphql
+mutation {
+  createTodo(input: { title: "title", description: "description", completed: false }) {
+    id
+    title
+    description
+    completed
+  }
+}
+```
+
+#### Update a Todo
+
+To update an existing todo, replace `todoId`, `newTitle`, `newDescription`, and `newCompleted` with your desired values:
+
+```graphql
+mutation {
+  updateTodo(input: { id: "todoId", title: "newTitle", description: "newDescription", completed: true }) {
+    id
+    title
+    description
+    completed
+  }
+}
+```
+
+#### Delete a Todo
+
+To delete a specific todo, replace `todoId` with the ID of the todo you want to delete:
+
+```graphql
+mutation {
+  deleteTodo(id: "todoId") {
+    id
+    title
+    description
+    completed
+  }
+}
+```
+
+---
+
+Please ensure you replace the placeholders with actual values when using these queries and mutations in your GraphQL client.
