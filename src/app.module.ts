@@ -6,12 +6,14 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Todo } from './todos/todo.entity';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'mongodb',
-      url: 'mongodb+srv://admin:admin@todo.oh75pt7.mongodb.net/?retryWrites=true&w=majority&appName=todo',
+      url: process.env.DBURL,
       synchronize: true,
       useUnifiedTopology: true,
       entities: [Todo],
