@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { TodosModule } from './todos/todos.module';
+import { TodosModule } from './todos/todo.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';

@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { TodosService } from './todos.service';
+import { TodosService } from './todo.service';
 
 @Module({
   providers: [TodosService]
