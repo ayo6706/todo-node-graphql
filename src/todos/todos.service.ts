@@ -32,4 +32,13 @@ export class TodosService {
             throw error;
         }
     }
+
+    async updateTodoById(id: string, todo: Todo): Promise<Todo> {
+        try{
+            await this.repo.update({id}, todo);
+            return await this.repo.findOneBy({id});
+        }catch(error:any){
+            throw error;
+        }
+    }
 }
